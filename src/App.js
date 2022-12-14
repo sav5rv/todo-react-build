@@ -1,26 +1,34 @@
-import React        from "react";
+import React, { useState } from "react";
+
 import Form         from "./components/Form";
 import FilterButton from "./components/FilterButton";
 import Todo         from "./components/Todo";
 
 
+
 function App(props) {
 
+  const [tasks, setTasks] = useState(props.tasks);
+
   //https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_components#rendering_with_iteration
-  const taskList = props.tasks.map((task) => (
+  const taskList = tasks.map((task) => (
     <Todo
-       id={task.id}
-       name={task.name}
-       completed={task.completed}
-       key={task.id}
-      />
-    )
-  );
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+    />
+  ));
+
+  function addTask(name) {
+    const newTask = { id: "id", name, completed: false };
+    setTasks([...tasks, newTask]);
+  }
 
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      <Form />
+      <Form addTask={addTask} />
 
       <div className="filters btn-group stack-exception">
         <FilterButton />
