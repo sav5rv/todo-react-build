@@ -3,8 +3,8 @@ import Form         from "./components/Form";
 import FilterButton from "./components/FilterButton";
 import Todo         from "./components/Todo";
 
+
 function App(props) {
-  console.log(props);
 
   //https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_components#rendering_with_iteration
   const taskList = props.tasks.map((task) => (
@@ -21,6 +21,7 @@ function App(props) {
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
       <Form />
+
       <div className="filters btn-group stack-exception">
         <FilterButton />
         <FilterButton />
